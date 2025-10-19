@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // useNavigate hook එක import කරගන්නවා
 import axios from 'axios'; // axios import කරගන්නවා
 import { toast } from 'react-toastify';
+import api from '../api/axiosConfig';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -53,7 +54,7 @@ function SignUp() {
         setServerError('');
         if (validate()) {
             try {
-                await axios.post('http://localhost:8080/api/auth/signup', formData);
+                await api.post('/auth/signup', formData);
 
                 // --- alert() එක වෙනුවට toast.success() ---
                 toast.success('Registration successful! Please check your email to verify your account.');

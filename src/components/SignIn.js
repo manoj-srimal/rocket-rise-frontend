@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../api/axiosConfig';
 import { jwtDecode } from 'jwt-decode';
 
 function SignIn() {
@@ -41,7 +42,7 @@ function SignIn() {
         e.preventDefault();
         if (validate()) {
             try {
-                const response = await axios.post('http://localhost:8080/api/auth/login', formData);
+                const response = await api.post('/auth/login', formData);
                 const token = response.data.token;
 
                 localStorage.setItem('token', token);

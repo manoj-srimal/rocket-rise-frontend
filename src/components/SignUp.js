@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // useNavigate hook එක import කරගන්නවා
-import axios from 'axios'; // axios import කරගන්නවා
 import { toast } from 'react-toastify';
 import api from '../api/axiosConfig';
 

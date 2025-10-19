@@ -53,7 +53,7 @@ function SignUp() {
         setServerError('');
         if (validate()) {
             try {
-                const response = await axios.post('http://localhost:8080/api/auth/signup', formData);
+                await axios.post('http://localhost:8080/api/auth/signup', formData);
 
                 // --- alert() එක වෙනුවට toast.success() ---
                 toast.success('Registration successful! Please check your email to verify your account.');

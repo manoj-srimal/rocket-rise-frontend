@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import api from '../../api/axiosConfig';
 import { toast } from 'react-toastify';
 
@@ -10,7 +10,7 @@ const GameSignals = () => {
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     // Data fetch කරන logic එක, වෙනම function එකකට ගන්නවා
-    const fetchSignals = async () => {
+    const fetchSignals = useCallback(async () => {
         // Refresh button එක click කළොත් isRefreshing true කරනවා
         if (!loading) setIsRefreshing(true);
 
@@ -23,12 +23,12 @@ const GameSignals = () => {
             setLoading(false);
             setIsRefreshing(false); // Data load වෙලා ඉවර වුණාම isRefreshing false කරනවා
         }
-    };
+    },[loading]);
 
     // Component එක මුලින්ම load වෙනකොට signals ටික fetch කරනවා
     useEffect(() => {
         fetchSignals();
-    }, []);
+    }, [fetchSignals]);
 
     return (
         <div>

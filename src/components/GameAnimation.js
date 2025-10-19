@@ -8,7 +8,6 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const crashPointRef = useRef(1.00);
 
-    // Load images
     useEffect(() => {
         let loadedCount = 0;
         const images = [planeImage.current, explosionImage.current];
@@ -20,11 +19,12 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
         };
         images.forEach(img => {
             img.onload = onImageLoad;
-            img.onerror = () => { console.error(`Failed to load image: ${img.src}`); onImageLoad(); };
+            img.onerror = () => { onImageLoad(); };
         });
     }, []);
 
-    // The main animation drawing function
+    // --- මෙතන තමයි නිවැරදි කිරීම ---
+    // dependency array එකෙන් 'countdown' ඉවත් කළා
     const drawAnimation = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas || !imagesLoaded) return;
@@ -38,39 +38,23 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
             return { x, y };
         };
 
-        // --- Axis Labels and Grid Drawing ---
+        const progress = (status === 'WAITING' && countdown > 0) ? (10 - countdown) / 10 : 1;
+        ctx.globalAlpha = (status === 'WAITING' && countdown > 0) ? progress : 1;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
         ctx.lineWidth = 1;
-        ctx.font = "12px Arial";
-        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
-
-        // Y-Axis Labels (Multipliers)
-        const yLabels = [1.5, 2, 3, 5, 10];
-        yLabels.forEach(label => {
-            const pos = getPosition(label);
-            if (pos.y < canvas.height - 20 && pos.y > 10) {
-                ctx.fillText(`${label.toFixed(1)}x`, 5, pos.y + 4);
-                ctx.beginPath();
-                ctx.moveTo(40, pos.y);
-                ctx.lineTo(canvas.width, pos.y);
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-                ctx.stroke();
-            }
-        });
-
-        // X-Axis Labels (Time in seconds)
-        const xLabels = [2, 4, 6, 8, 10, 12, 14, 16];
-        xLabels.forEach(sec => {
-            const time = sec * 8.3; // Approximate time unit from getPosition
-            const x = 50 + time * 15;
-            if (x < canvas.width - 20) {
-                ctx.fillText(`${sec}s`, x - 8, canvas.height - 5);
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height - 40);
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-                ctx.stroke();
-            }
-        });
+        for (let i = 0; i < canvas.width; i += 40) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, canvas.height);
+            ctx.stroke();
+        }
+        for (let i = 0; i < canvas.height; i += 40) {
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(canvas.width, i);
+            ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
 
         if (status === 'RUNNING' || status === 'COMPLETED') {
             const pathMultiplier = (status === 'RUNNING') ? multiplier : crashPointRef.current;
@@ -79,14 +63,12 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
             const startPos = getPosition(1.00);
             ctx.moveTo(startPos.x, canvas.height);
             ctx.lineTo(startPos.x, startPos.y);
-
             for (let m = 1.01; m <= pathMultiplier; m += 0.05) {
                 const pos = getPosition(m);
                 ctx.lineTo(pos.x, pos.y);
             }
             const finalPos = getPosition(pathMultiplier);
             ctx.lineTo(finalPos.x, finalPos.y);
-
             ctx.lineTo(finalPos.x, canvas.height);
             ctx.closePath();
 
@@ -118,7 +100,7 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
                 ctx.drawImage(explosionImage.current, finalPos.x - 50, finalPos.y - 50, 100, 100);
             }
         }
-    }, [status, multiplier, imagesLoaded, countdown]);
+    }, [status, multiplier, imagesLoaded]); // 'countdown' removed
 
     useEffect(() => {
         if (!imagesLoaded) return;
@@ -153,7 +135,7 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
                 color: status === 'COMPLETED' ? '#ff4d4d' : 'white',
                 fontWeight: 'bold', textShadow: '2px 2px 8px rgba(0,0,0,0.7)',
             }}>
-                {status === 'COMPLETED' ? `Crashed  ${crashPointRef.current.toFixed(2)}x` : `${multiplier.toFixed(2)}x`}
+                {status === 'COMPLETED' ? `Crashed @ ${crashPointRef.current.toFixed(2)}x` : `${multiplier.toFixed(2)}x`}
             </div>
         </div>
     );

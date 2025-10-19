@@ -24,7 +24,7 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
     }, []);
 
     // --- මෙතන තමයි නිවැරදි කිරීම ---
-    // dependency array එකෙන් 'countdown' ඉවත් කළා
+    // dependency array එකට 'countdown' නැවත එකතු කළා
     const drawAnimation = useCallback(() => {
         const canvas = canvasRef.current;
         if (!canvas || !imagesLoaded) return;
@@ -100,7 +100,7 @@ const GameAnimation = ({ multiplier, status, countdown }) => {
                 ctx.drawImage(explosionImage.current, finalPos.x - 50, finalPos.y - 50, 100, 100);
             }
         }
-    }, [status, multiplier, imagesLoaded]); // 'countdown' removed
+    }, [status, multiplier, imagesLoaded, countdown]); // 'countdown' නැවත එකතු කළා
 
     useEffect(() => {
         if (!imagesLoaded) return;

@@ -1,0 +1,183 @@
+/* ============================================================
+   ADMIN PANEL STYLES (PROFESSIONAL SOLID DARK + GLASS UI)
+============================================================ */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #0d1117;
+}
+
+/* --- Sidebar Styles --- */
+.admin-sidebar {
+    width: 250px;
+    background-color: #161b22;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+}
+
+.admin-sidebar h3 { text-align: center; margin-bottom: 30px; font-weight: bold; color: #0d6efd; text-shadow: 0 0 10px rgba(13, 110, 253, 0.5); font-size: 1.8rem; }
+.admin-nav-list { list-style: none; padding: 0; flex-grow: 1; }
+.admin-nav-list li a { color: #ccc; text-decoration: none; display: block; padding: 12px 15px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; transition: background-color 0.2s, color 0.2s, box-shadow 0.2s; }
+.admin-nav-list li a:hover { background-color: rgba(255, 255, 255, 0.05); color: white; }
+.admin-nav-list li a.active { background-color: #0d6efd; color: white; font-weight: bold; }
+.admin-sidebar-footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* --- Main Content Area Styles --- */
+.admin-content {
+    flex-grow: 1;
+    padding: 40px;
+    color: white;
+    overflow-y: auto;
+    background-color: #121212;
+}
+.admin-content h1 { margin-bottom: 30px; font-size: 2.5rem; font-weight: bold; color: white; text-shadow: 0 0 8px rgba(255,255,255,0.2); }
+
+/* --- Dashboard Stat Cards Glass Effect --- */
+.stat-card { background: #1e252f; padding: 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.15); transition: transform 0.3s, box-shadow 0.3s; }
+.stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.stat-card h5 { color: #b0b0b0; font-size: 1rem; font-weight: 500; text-transform: uppercase; margin-bottom: 15px; }
+.stat-card h2 { font-size: 2.8rem; font-weight: bold; margin: 0; color: #0d6efd; word-break: break-all; }
+.stat-card .text-warning { color: #ffc107 !important; text-shadow: 0 0 5px rgba(255, 193, 7, 0.5); }
+
+/* --- Chart Card Glass Effect --- */
+.chart-card { background: #1e252f; padding: 25px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+
+/* --- User Management Page Styles --- */
+.user-management-page .form-control, .user-management-page .form-select { background-color: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.2); }
+.user-management-page .form-control:focus, .user-management-page .form-select:focus { background-color: rgba(255, 255, 255, 0.15); color: white; border-color: #0d6efd; box-shadow: none; }
+.user-management-page .form-select option { background: #2a2a2a; color: white; }
+.user-management-page .table { --bs-table-bg: #1e252f; --bs-table-hover-bg: #2a2f3b; border-radius: 10px; overflow: hidden; }
+.user-management-page .table thead th { background-color: #0d6efd; }
+.user-name-link { color: #0d6efd; text-decoration: none; font-weight: bold; }
+.user-name-link:hover { text-decoration: underline; }
+
+/* Status Badges */
+.status-badge { padding: 6px 12px; border-radius: 15px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+.status-badge.status-active { background-color: #198754; color: white; }
+.status-badge.status-suspended { background-color: #ffc107; color: #333; }
+.status-badge.status-inactive { background-color: #dc3545; color: white; }
+
+/* Modal Custom Styles */
+.modal-content { background-color: #2c2c38 !important; color: white !important; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; }
+.modal-header { border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; }
+.modal-header .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+.modal-footer { border-top: 1px solid rgba(255, 255, 255, 0.2) !important; }
+.profile-details-list { padding-left: 10px; }
+
+/* --- Admin Performance Table Styles --- */
+.performance-table {
+    --bs-table-bg: #1e252f;
+    --bs-table-hover-bg: #2a2f3b;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1rem; /* Table font size */
+}
+.performance-table thead th {
+    background-color: #0d6efd;
+    font-size: 1rem;
+    padding: 15px; /* More padding for header */
+}
+.performance-table tbody td {
+    font-size: 1.1rem;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+/* ============================================================
+   USER MANAGEMENT PAGE SPECIFIC STYLES
+============================================================ */
+
+/* --- User Management & Transaction Management Search Bar --- */
+.user-management-page form, .transaction-management-page form {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+.user-management-page .input-group, .transaction-management-page .input-group {
+    border-radius: 50px;
+    background: rgba(40, 40, 50, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.user-management-page .form-control, .transaction-management-page .form-control {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-size: 1.1rem;
+    padding-left: 20px;
+}
+.user-management-page .form-control:focus, .transaction-management-page .form-control:focus {
+    box-shadow: none !important;
+}
+.user-management-page .btn-primary, .transaction-management-page .btn-primary {
+    border-radius: 50px !important;
+    font-weight: bold;
+    padding: 10px 25px;
+}
+
+/* --- User Management & Transaction Management Tables --- */
+.user-management-page .table, .transaction-management-page .table {
+    --bs-table-bg: #1e252f;
+    --bs-table-hover-bg: #2a2f3b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.user-management-page .table thead th, .transaction-management-page .table thead th {
+    background-color: #0d6efd;
+}
+
+/* --- Assign Admin Component Styles --- */
+.assign-admin-container {
+    padding: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.assign-admin-container h4 {
+    color: white;
+}
+.found-user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.withdrawal-details {
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 5px;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+
+/* ============================================================
+   RESPONSIVE STYLES FOR ADMIN PANEL
+============================================================ */
+@media (max-width: 1200px) {
+    .stat-card h5 { font-size: 0.9rem; }
+    .stat-card h2 { font-size: 2.2rem; }
+}
+@media (max-width: 992px) {
+    .admin-sidebar { width: 220px; }
+    .admin-content { padding: 30px; }
+    .stat-card h2 { font-size: 2rem; }
+}
+@media (max-width: 768px) {
+    .admin-layout { flex-direction: column; }
+    .admin-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .admin-nav-list { display: flex; flex-wrap: wrap; justify-content: center; }
+    .admin-nav-list li { margin: 0 5px; }
+    .admin-content { padding: 20px; }
+    .stat-card { margin-bottom: 1rem; }
+    .user-management-page .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; }
+    .user-management-page .table { min-width: 700px; font-size: 0.8rem; }
+}

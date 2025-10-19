@@ -1,0 +1,180 @@
+/* ============================================================
+   BASE AND BACKGROUND STYLES
+============================================================ */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    color: white;
+    background-color: #0d1117;
+}
+
+.app-container, .dashboard-root {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.video-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: -1; }
+
+.glass-card {
+    background: rgba(30, 30, 40, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tagline { font-size: 1.2rem; color: #CCCCCC; margin-top: 10px; margin-bottom: 20px; }
+.main-heading { font-size: 3rem; font-weight: bold; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); }
+
+/* ============================================================
+   SIGN-IN / SIGN-UP FORM STYLES
+============================================================ */
+.glass-card .form-control { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); color: white; }
+.glass-card .form-control::placeholder { color: #888; }
+.glass-card .form-control:focus { background: rgba(0, 0, 0, 0.3); border-color: #0d6efd; box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); }
+.glass-card .card-title { font-weight: bold; margin-bottom: 1.5rem; color: white; }
+
+/* ============================================================
+   DASHBOARD LAYOUT
+============================================================ */
+.dashboard-root { padding-top: 80px; width: 100%; }
+.top-bar { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; padding: 0 40px; z-index: 1000; }
+.top-bar-left h3 { margin: 0; font-size: 1.5rem; font-weight: bold; }
+.top-bar-right { display: flex; align-items: center; gap: 25px; }
+.top-bar .user-balance-info { font-size: 1.1rem; color: #ccc; }
+.top-bar .balance-amount { font-weight: bold; color: #28a745; font-size: 1.2rem; }
+.logout-button { font-size: 0.9rem; padding: 8px 15px; }
+.main-content { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 40px 20px 40px; }
+
+/* ============================================================
+   GAME AREA & ANIMATION
+============================================================ */
+.game-area-card { height: 450px; position: relative; }
+.game-area-card .card-body { padding: 0; width: 100%; height: 100%; }
+.multiplier-text { font-size: 6rem; }
+.countdown-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.7); padding: 20px 40px; border-radius: 10px; font-size: 2.5rem; font-weight: bold; color: white; z-index: 20; border: 2px solid #FFD700; }
+.countdown-number { color: #FFD700; font-size: 3rem; }
+
+/* ============================================================
+   ROUND HISTORY & BET CONTROLS
+============================================================ */
+.round-history-bar { display: flex; gap: 8px; padding: 10px; background-color: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow-x: auto; white-space: nowrap; margin-bottom: 20px; }
+.history-item { padding: 6px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.low-multiplier { background-color: #5a6268; color: white; }
+.high-multiplier { background: linear-gradient(45deg, #00b894, #00d2d3); color: white; }
+
+.bet-controls-container { padding: 15px; display: flex; flex-direction: column; }
+.bet-auto-toggle { display: flex; background-color: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 4px; margin-bottom: 15px; }
+.bet-auto-toggle button { flex: 1; background-color: transparent; border: none; color: #ccc; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background-color 0.3s, color 0.3s; }
+.bet-auto-toggle button.active { background-color: #495057; color: white; }
+.controls-main, .controls-main-auto { display: flex; gap: 15px; align-items: flex-end; }
+.bet-input-section { flex-grow: 1; }
+.bet-input-section label { font-size: 0.9rem; color: #ccc; margin-bottom: 5px; display: block; text-align: left; }
+.bet-input { text-align: center; font-weight: bold; font-size: 1.2rem; background-color: rgba(0,0,0,0.3); color: white; border-color: #495057; }
+.bet-input:focus { background-color: rgba(0,0,0,0.4); color: white; border-color: #6c757d; box-shadow: none; }
+.bet-action-section { flex-grow: 1; }
+.place-bet-btn { width: 100%; padding: 12px; font-size: 1.3rem; font-weight: bold; }
+.auto-cashout-section { /* Styles for Auto Cash Out section */ }
+
+
+/* ============================================================
+   ACCOUNT PAGE STYLES (COMPLETE & IMPROVED)
+============================================================ */
+.account-page-container { width: 100%; max-width: 1200px; margin: 20px auto; padding: 0 15px; color: white; }
+.account-nav .list-group-item { background-color: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: #e0e0e0; font-weight: 500; cursor: pointer; transition: background-color 0.2s, color 0.2s; }
+.account-nav .list-group-item:last-child { border-bottom: none; }
+.account-nav .list-group-item:hover, .account-nav .list-group-item.active { background-color: rgba(255, 255, 255, 0.1); color: white; }
+.account-content { min-height: 500px; }
+.account-content .card-title { font-weight: bold; margin-bottom: 1.5rem; color: white; text-align: left; }
+.profile-details-list li { margin-bottom: 12px; text-align: left; font-size: 1rem; color: #f0f0f0; }
+.profile-details-list li strong { color: #bdc3c7; width: 100px; display: inline-block; }
+.profile-details-list li span { font-weight: 500; }
+.account-page-container h4 { text-align: left; margin-top: 1.5rem; margin-bottom: 1rem; color: white; }
+.account-page-container hr { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.account-page-container .form-label { text-align: left; width: 100%; color: #e0e0e0; margin-bottom: 8px; }
+.account-page-container .text-muted { color: #b0b0b0 !important; }
+.account-page-container .form-control { background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 12px 15px; }
+.account-page-container .form-control::placeholder { color: #888; }
+.account-page-container .form-control:focus { background: rgba(0, 0, 0, 0.3); border-color: #0d6efd; box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); }
+.account-page-container .btn-primary { padding: 12px; font-weight: bold; }
+.table-responsive { max-height: 450px; overflow-y: auto; }
+.account-page-container .table { --bs-table-bg: transparent; --bs-table-striped-bg: rgba(255, 255, 255, 0.03); --bs-table-hover-bg: rgba(255, 255, 255, 0.07); color: white; }
+.account-page-container .table thead th { color: #ffffff; font-weight: bold; }
+.status-badge { padding: 5px 10px; border-radius: 12px; font-weight: bold; font-size: 0.8rem; text-transform: capitalize; }
+.status-pending { background-color: #ffc107; color: #333; }
+.status-completed { background-color: #198754; color: white; }
+.status-rejected { background-color: #dc3545; color: white; }
+
+/* ... Account Page Styles වලින් පස්සේ ... */
+
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.payment-method-card {
+    background-color: rgba(0,0,0,0.3);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+}
+.payment-method-card h5 { font-weight: bold; }
+.payment-method-card pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 10px 0 0 0;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #f0f0f0;
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ... Account Page Styles වලින් පස්සේ, නමුත් @media block එකට කලින් ... */
+
+.saved-method-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES (Screens 768px or smaller)
+============================================================ */
+@media (max-width: 768px) {
+    .top-bar { padding: 0 15px; height: auto; flex-direction: column; align-items: flex-start; padding-top: 10px; padding-bottom: 10px; }
+    .top-bar-left h3 { font-size: 1.2rem; margin-bottom: 5px; }
+    .top-bar-right { width: 100%; justify-content: space-between; }
+    .dashboard-root { padding-top: 110px; }
+    .main-content { padding: 0 10px 10px 10px; }
+    .game-area-card { height: 300px; }
+    .multiplier-text { font-size: 3.5rem !important; }
+    .countdown-overlay { font-size: 1.5rem; }
+    .controls-main, .controls-main-auto { flex-direction: column; align-items: stretch; gap: 10px; }
+
+    /* Account Page Mobile */
+    .account-page-container { margin: 10px auto; padding: 0 5px; }
+    @media (max-width: 991px) { .account-page-container .row > div { margin-bottom: 1.5rem; } }
+}

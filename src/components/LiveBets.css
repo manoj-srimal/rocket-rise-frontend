@@ -1,0 +1,21 @@
+.live-bets-container {
+    padding: 20px;
+}
+.live-bets-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+.live-bet-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.live-bet-item .username { font-weight: bold; }
+.live-bet-item .bet-amount { color: #ccc; }
+.live-bet-item.cashed-out { background-color: rgba(40, 167, 69, 0.2); }
+.cashout-info { color: #28a745; }
+.cashout-multiplier { font-weight: bold; }
+.status-placed { color: #ffc107; }
